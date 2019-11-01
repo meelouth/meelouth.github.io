@@ -6,6 +6,11 @@ text-align: center
     background-color: #856396;
 }
 
+.bg-dark-transparent{
+    background-color: #333333;
+    opacity: 0.95;
+}
+
 .header {
     background-color: aqua;
 }
@@ -97,4 +102,23 @@ video {
     border-radius: 20px;
     background-color: transparent;
     border: solid;
+}
+
+.overlay button:hover {
+    transition: 0.2s;
+    background-color: blueviolet;
+}
+
+.violet-text{
+    color: blueviolet;
+}
+
+.violet-text left{
+    text-align:left
+}
+
+.img-support
+{
+    width: 100%;
+    height: auto;
 }

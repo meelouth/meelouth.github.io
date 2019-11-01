@@ -1,0 +1,42 @@
+.head-game
+{
+    background: #ccc;
+    height: 500px;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.bg-accent
+{
+    background-color: #efe6e2;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.bg-video{
+    background-color: #d7d7d7;
+    padding-top: 80px;
+}
+
+.head-game.homescapes
+{
+    background: #56d2e6 url(../images/headgame.png) top;
+    background-size: cover;
+}
+
+.description
+{
+    font-size: 22.92px;
+    margin: 0 0 46px;
+}
+
+.img-large{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+.icon-game{
+    margin: 0 auto;
+}
+
