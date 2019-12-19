@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Красивые формы для сайта - примеры оформления</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Примеры красивого оформления форм на сайте" />
+    <meta name="author" content="HTML5BOOK" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One|Roboto&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="single.css" />
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/product/">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="assets/css/product.css" rel="stylesheet">
+    <link href="assets/css/About.css" rel="stylesheet">
+    <link href="assets/css/block.css" rel="stylesheet">
+
+    <style>
+        body {background: #856396}
+        .decor {
+            position: relative;
+            max-width: 400px;
+            margin: 50px auto 0;
+            background: white;
+            border-radius: 30px;
+        }
+        .form-left-decoration,
+        .form-right-decoration {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background: #856396;
+            border-radius: 20px;
+        }
+        .form-left-decoration {
+            bottom: 60px;
+            left: -30px;
+        }
+        .form-right-decoration {
+            top: 60px;
+            right: -30px;
+        }
+        .form-left-decoration:before,
+        .form-left-decoration:after,
+        .form-right-decoration:before,
+        .form-right-decoration:after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            border-radius: 30px;
+            background: white;
+        }
+        .form-left-decoration:before {top: -20px;}
+        .form-left-decoration:after {
+            top: 20px;
+            left: 10px;
+        }
+        .form-right-decoration:before {
+            top: -20px;
+            right: 0;
+        }
+        .form-right-decoration:after {
+            top: 20px;
+            right: 10px;
+        }
+        .circle {
+            position: absolute;
+            bottom: 80px;
+            left: -55px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+        }
+        .form-inner {padding: 50px;}
+        .form-inner input,
+        .form-inner textarea {
+            display: block;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 10px;
+            background: #E9EFF6;
+            line-height: 40px;
+            border-width: 0;
+            border-radius: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .form-inner input[type="submit"] {
+            margin-top: 30px;
+            background: #856396;
+            border-bottom: 4px solid #59118c;
+            color: white;
+            font-size: 14px;
+        }
+        .form-inner textarea {resize: none;}
+        .form-inner h3 {
+            margin-top: 0;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            color: #707981;
+        }
+        @media(max-width:480px){
+            .form-left-decoration,
+            .form-right-decoration,
+            .circle {display: none;}
+            .form-inner{padding: 30px 20px;}
+            .form-inner h3{text-align:center;}
+        }
+        .example-2 .btn-tertiary{color:#555;padding:0;line-height:40px;width:300px;
+            display:block;border:2px solid #555;
+            margin: 10px auto 10px;
+        }
+        .example-2 .btn-tertiary:hover,.example-2 .btn-tertiary:focus{color:#888;border-color:#888}
+        .example-2 .input-file{width:.1px;height:.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}
+        .example-2 .input-file + .js-labelFile{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 10px;cursor:pointer}
+        .example-2 .input-file + .js-labelFile .icon:before{content:"\f093"}
+        .example-2 .input-file + .js-labelFile.has-file .icon:before{content:"\f00c";color:#5AAC7B}
+    </style>
+    </head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-transparent">
+    <img src="assets/images/logo.png" width="30" height="30">
+    <a class="navbar-brand" style="font-family: Pacifico; padding-left: 10px" href="#"> Mantiya</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">About</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="games.html">Games</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Publishing</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <form class="decor" enctype="multipart/form-data">
+        <div class="form-left-decoration"></div>
+        <div class="form-right-decoration"></div>
+        <div class="circle"></div>
+        <div class="form-inner">
+            <h3>Sumbit your game!</h3>
+            <h5>About game...</h5>
+            <input type="text" placeholder="Game title">
+            <div class="example-2">
+                <input type="file" name="file" id="file" class="input-file">
+                <label for="file" class="btn btn-tertiary js-labelFile">
+                    <span class="js-fileName">Upload gameplay video</span>
+                </label>
+            </div>
+            <div class="example-2">
+                <input type="file" name="file" id="file1" class="input-file">
+                <label for="file" class="btn btn-tertiary js-labelFile">
+                    <span class="js-fileName">Upload icon</span>
+                </label>
+            </div>
+
+            <textarea placeholder="Tell us more about your game" rows="3"></textarea>
+
+            <h5>About team...</h5>
+            <input type="text" placeholder="Studio name">
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Skype ID">
+            <input type="submit" value="Отправить">
+        </div>
+    </form>
+
+</div>
+
+<footer id="colophon" class="site-footer globalFooter" role="contentinfo">
+
+    <div class="container">
+    </div>
+    <div class="globalFooter-logos">
+        <img class="custom-logo-icon" src="assets/images/logo.png"/>
+
+    </div>
+    <div class="globalFooter-legal"><p>© 2019 Mantiya Entertainment. All Rights Reserved. Mantiya logo are registered or unregistered trademarks of Mantiya Entertainment in the Russia. and/or other countries.</p><div class="globalFooter-legal--links"><a href="#" target="_blank" rel="noopener
+noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - contacts">Support</a><span>  |  </span><a
+            href="#" target="_blank" rel="noopener noreferrer" data-aa-location="footer"
+            data-aa-category="action" data-aa-action="legal - privacy">Privacy</a><span>  |  </span><a href="#"
+                                                                                                       target="_blank" rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - legal
+info">Legal Info</a><span>  |  </span><a href="#" target="_blank" rel="noopener noreferrer"
+                                         data-aa-location="footer" data-aa-category="action" data-aa-action="legal - terms">Terms</a><span>  |  </span><a href="https://legal.ubi.com/"
+                                                                                                                                                          target="_blank" rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal -
+documents ">Legal Documents</a><span>  |  </span><a
+            href="#" target="_blank"
+            rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - interest based
+Ads">Interest-Based Ads</a><span>  |  </span><a href="#" target="_blank"
+                                                rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - code of conduct">Code
+        of Conduct</a></div>
+    </div>
+</footer><
+
+
+
+</body>
+</html>
