@@ -12,7 +12,7 @@
             <a class="nav-link" href="index.html">About</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="games.html">Games</a>
+            <router-link to="/games"><a class="nav-link"> Games</a></router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Publishing</a>
@@ -55,6 +55,6 @@ Ads">Interest-Based Ads</a><span>  |  </span><a href="#" target="_blank"
 
 <style>
 #app {
-  
+
 }
 </style>
