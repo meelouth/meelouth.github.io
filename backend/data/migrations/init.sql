@@ -6,7 +6,8 @@ CREATE TABLE games(
     video VARCHAR(50) NOT NULL,
     icon VARCHAR(50),
     background VARCHAR(50),
-    description VARCHAR(50) NOT NULL
+    description VARCHAR(50) NOT NULL,
+    appstorelink VARCHAR(50)
 );
 
 CREATE TABLE senders(

@@ -4,13 +4,13 @@
         </header>
         <div class="container tight bg-accent">
             <div class="row">
-                <div class="col-md-3 icon-game"><img src=" ../assets/images/icon_3.png" class="img-large"></div>
+                <div class="col-md-3 icon-game"><img :src="model.icon" class="img-large"></div>
                 <div class="col-md-9">
                     <h2 class="title">{{model.name}}</h2>
                     <p class="description">{{model.description}}</p>
                     <div>
-                        <a href="https://apps.apple.com/us/app/perspective/id1469038654" target="_blank" class="btn-store"><img src="../assets/images/btn-appstore.png"></a>
-                        <a href="#" target="_blank" class="btn-store"><img src="../assets/images/btn-googleplay.png"></a>
+                        <a href="https://apps.apple.com/us/app/perspective/id1469038654" target="_blank" class="btn-store"><img src="../../public/images/btn-appstore.png"></a>
+                        <a href="#" target="_blank" class="btn-store"><img src="../../public/images/btn-googleplay.png"></a>
                     </div>
                 </div>
             </div>

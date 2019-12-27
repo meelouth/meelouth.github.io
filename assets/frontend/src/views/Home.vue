@@ -23,7 +23,7 @@
                     <div class="block-media-text alignwide is-stacked-on-mobile aboutUs"
                          style="background-color:#ffffff;grid-template-columns:21% auto">
                       <figure class="block-media-text__media">
-                        <img src="../assets/images/Stack_home.png" />
+                        <img src="../../public/images/Stack_home.png" />
 
                       </figure>
                       <div class="block-media-text__content">
@@ -85,7 +85,7 @@
                         <div class="valueBox">
                           <p class="imgBox" style="padding:10%">
                             <img class="img-support" width="150" height="150"
-                                 src="../assets/images/imgBox/picto3.png">
+                                 src="../../public/images/imgBox/picto3.png">
                           </p>
                           <p class="text_whatWeOffer">
                             <strong class="violet-text">Get the most out of your game</strong><br>
@@ -101,7 +101,7 @@
                         <div class="valueBox">
                           <p class="imgBox" style="padding:10%">
                             <img class="img-support" width="150" height="150"
-                                 src="../assets/images/imgBox/picto1.png">
+                                 src="../../public/images/imgBox/picto1.png">
                           </p>
                           <p class="text_whatWeOffer">
                             <strong class="violet-text">Reach the audience your game truly
@@ -118,7 +118,7 @@
                              style="margin:5%; border-radius: 10px;border: 1px solid #dedede; height:100%; padding:10%">
                           <p class="imgBox img-support" style="padding:10%">
                             <img class="img-support" width="140" height="140"
-                                 src="../assets/images/imgBox/picto2.png">
+                                 src="../../public/images/imgBox/picto2.png">
                           </p>
                           <p class="text_whatWeOffer">
                             <strong class="violet-text">Enjoy a tight-knit relationship with our

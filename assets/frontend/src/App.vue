@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark-transparent">
-      <img src="assets/images/logo.png" width="30" height="30">
+      <img src="../public/images/logo.png" width="30" height="30">
       <a class="navbar-brand" style="font-family: Pacifico; padding-left: 10px" href="#"> Mantiya</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
       <div class="container">
       </div>
       <div class="globalFooter-logos">
-        <img class="custom-logo-icon" src="assets/images/logo.png"/>
+        <img class="custom-logo-icon" src="../public/images/logo.png"/>
 
       </div>
       <div class="globalFooter-legal"><p>© 2019 Mantiya Entertainment. All Rights Reserved. Mantiya logo are registered or unregistered trademarks of Mantiya Entertainment in the Russia. and/or other countries.</p><div class="globalFooter-legal--links"><a href="#" target="_blank" rel="noopener
