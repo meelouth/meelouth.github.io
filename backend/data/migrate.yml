@@ -1,0 +1,5 @@
+local:
+  dialect: mysql
+  datasource: root:1234@tcp(localhost:3306)/reactions?collation=utf8mb4_unicode_ci&parseTime=true&time_zone=%27%2B00%3A00%27
+  dir: data/migrations
+  table: migrations

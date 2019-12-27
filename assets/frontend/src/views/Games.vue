@@ -43,7 +43,7 @@
         <div class="bg-yellow mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
             <div onclick="location.href='https://apps.apple.com/us/app/perspective/id1469038654';" style="cursor: pointer;">
                 <div class="my-3 py-3">
-                    <h2 class="display-5">Bomber.io</h2>
+                    <h2 class="display-5">{{model.name}}</h2>
                     <p class="lead">New .io game!</p>
                 </div>
                 <img class="circle-border" src="assets/frontend/src/images/icon_4.jpg" width="320" height="320" alt="Perspective">
@@ -55,12 +55,19 @@
 </template>
 
 <script>
+    import HTTP from "../components/http";
+
     export default {
         name: "Games",
         data() {
             return {
                 models: []
             };
+        },
+        created() {
+            HTTP.get('http://127.0.0.1:8081/games')
+                .then(response => (this.models = response.data))
+
         }
     }
 </script>

@@ -1,0 +1,22 @@
+version: "3.6"
+
+services:
+  database:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'games'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+    - "3339:3306"
+  goservice:
+    build: "."
+    ports:
+    - "8081:8081"
+    environment:
+      DSN: 'user:password@tcp(database:3306)/games?collation=utf8mb4_unicode_ci&parseTime=true'
+      PORT: ':8081'
+    depends_on:
+      - database
