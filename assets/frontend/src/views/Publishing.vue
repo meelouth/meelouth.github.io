@@ -43,7 +43,7 @@
                 name: '',
                 description: '',
                 icon: 'null',
-                video: 'null',
+                video: '',
                 appstorelink: ''
             },
                 sender:{
@@ -54,15 +54,25 @@
         }),
         methods: {
             onFilesSelected(event){
-                this.selectedFile = event.target.files[0]
+                this.game.icon = event.target.files[0]
             },
             onUpload(){
-                this.game.icon = this.selectedFile.name;
                 HTTP.post('/games', {
                     game: this.game,
                     sender: this.sender
-                })
-            }
+                }).then(console.log(this.game.icon))
+            },
+            getBase64(file) {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+                    console.log(reader.result);
+                };
+                reader.onerror = function (error) {
+                console.log('Error: ', error);
+                return reader.result;
+            };
+    }
         }
     }
 </script>

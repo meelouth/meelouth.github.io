@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/labstack/echo/v4/middleware"
 	"io/ioutil"
 	"log"
@@ -82,6 +83,10 @@ func (s *Server) AddGame(ctx echo.Context) error {
 	if err != nil {
 		return ctx.String(http.StatusBadRequest, err.Error())
 	}
+
+	ctx.FormValue()
+
+	fmt.Println(string(raw))
 
 	var req model.AddRequest
 	err = json.Unmarshal(raw, &req)
