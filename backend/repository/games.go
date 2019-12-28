@@ -3,6 +3,7 @@ package repository
 import (
 	"github.com/jmoiron/sqlx"
 	"github.com/kurenkoff/bstu_backend/model"
+	"google.golang.org/appengine"
 )
 
 const (
@@ -46,6 +47,21 @@ func (s *SQL) GetGames() (*[]model.Game, error) {
 	err := s.Conn.Select(&games, SelectGames)
 	if err != nil {
 		return nil, err
+	}
+
+	return &games, nil
+}
+
+func (s *SQL) GetDoubledGames() (*[][]model.Game, error){
+	var games []model.Game
+
+	err := s.Conn.Select(&games, SelectGames)
+	if err != nil {
+		return nil, err
+	}
+
+	for int i; ;  {
+
 	}
 
 	return &games, nil
