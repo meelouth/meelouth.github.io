@@ -3,7 +3,6 @@ package repository
 import (
 	"github.com/jmoiron/sqlx"
 	"github.com/kurenkoff/bstu_backend/model"
-	"google.golang.org/appengine"
 )
 
 const (
@@ -52,20 +51,6 @@ func (s *SQL) GetGames() (*[]model.Game, error) {
 	return &games, nil
 }
 
-func (s *SQL) GetDoubledGames() (*[][]model.Game, error){
-	var games []model.Game
-
-	err := s.Conn.Select(&games, SelectGames)
-	if err != nil {
-		return nil, err
-	}
-
-	for int i; ;  {
-
-	}
-
-	return &games, nil
-}
 
 // InsertGame дописывает в конец таблицы games объект game
 func (s *SQL) InsertGame(game model.Game) (int64, error) {
