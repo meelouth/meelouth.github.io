@@ -84,9 +84,14 @@ func (s *Server) AddGame(ctx echo.Context) error {
 		return ctx.String(http.StatusBadRequest, err.Error())
 	}
 
-	ctx.FormValue()
-
 	fmt.Println(string(raw))
+
+	r := ctx.Request()
+
+
+
+	fmt.Println("FORM VALUE")
+	fmt.Println(r.FormValue("video"))
 
 	var req model.AddRequest
 	err = json.Unmarshal(raw, &req)

@@ -7,7 +7,7 @@ CREATE TABLE games(
     icon VARCHAR(50),
     background VARCHAR(50),
     description VARCHAR(50) NOT NULL,
-    appstorelink VARCHAR(50)
+    appstore_link VARCHAR(50)
 );
 
 CREATE TABLE senders(

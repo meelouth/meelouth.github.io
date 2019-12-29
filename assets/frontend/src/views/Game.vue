@@ -1,6 +1,7 @@
 <template>
     <section class="game">
-        <header class="head-game perspective">
+        <header>
+            <img src="/images/headgame.png" class="head-game perspective">
         </header>
         <div class="container tight bg-accent">
             <div class="row">

@@ -7,19 +7,19 @@ import (
 
 const (
 	SelectGame = `
-	select id, name, video, icon, background, description ,appstorelink
+	select id, name, video, icon, background, description, appstore_link
 	from games 
 	where id = ? limit 1
 `
 
 	SelectGames = `
-	select id, name, video, icon, background, description ,appstorelink
+	select id, name, video, icon, background, description, appstore_link
 	from games 
 	`
 
 	InsertGame = `
-	insert into games(name, video, icon, background, description, appstorelink)
-	values(:name, :video, :icon, :background, :description, :appstorelink)
+	insert into games(name, video, icon, background, description, appstore_link)
+	values(:name, :video, :icon, :background, :description, :appstore_link)
 	`
 )
 

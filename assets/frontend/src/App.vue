@@ -15,7 +15,7 @@
             <router-link to="/games"><a class="nav-link"> Games</a></router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/publishing"><a class="nav-link"> Games</a></router-link>
+            <router-link to="/publishing"><a class="nav-link"> Publishing</a></router-link>
           </li>
         </ul>
       </div>
@@ -33,25 +33,23 @@
         <img class="custom-logo-icon" src="../public/images/logo.png"/>
 
       </div>
-      <div class="globalFooter-legal"><p>© 2019 Mantiya Entertainment. All Rights Reserved. Mantiya logo are registered or unregistered trademarks of Mantiya Entertainment in the Russia. and/or other countries.</p><div class="globalFooter-legal--links"><a href="#" target="_blank" rel="noopener
-noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - contacts">Support</a><span>  |  </span><a
-              href="#" target="_blank" rel="noopener noreferrer" data-aa-location="footer"
-              data-aa-category="action" data-aa-action="legal - privacy">Privacy</a><span>  |  </span><a href="#"
-                                                                                                         target="_blank" rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - legal
-info">Legal Info</a><span>  |  </span><a href="#" target="_blank" rel="noopener noreferrer"
-                                         data-aa-location="footer" data-aa-category="action" data-aa-action="legal - terms">Terms</a><span>  |  </span><a href="https://legal.ubi.com/"
-                                                                                                                                                          target="_blank" rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal -
-documents ">Legal Documents</a><span>  |  </span><a
-              href="#" target="_blank"
-              rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - interest based
-Ads">Interest-Based Ads</a><span>  |  </span><a href="#" target="_blank"
-                                                rel="noopener noreferrer" data-aa-location="footer" data-aa-category="action" data-aa-action="legal - code of conduct">Code
-        of Conduct</a></div>
+      <div class="globalFooter-legal"><p>© 2019 Mantiya Entertainment. All Rights Reserved. Mantiya logo are registered or unregistered trademarks of Mantiya Entertainment in the Russia. and/or other countries.</p>
       </div>
     </footer>
 
   </div>
 </template>
+
+<script>
+  export default {
+    name: 'App',
+    watch: {
+      $route(to) {
+        document.title = to.meta.title || 'Some Default Title';
+      },
+    }
+  };
+</script>
 
 <style>
 #app {

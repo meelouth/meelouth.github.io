@@ -7,7 +7,7 @@ type Game struct {
 	Icon        string `json:"icon" db:"icon"`
 	Background  string `json:"background" db:"background"`
 	Description string `json:"description" db:"description"`
-	AppStoreLink string `json:"appstorelink" db:"appstorelink"`
+	AppstoreLink string `json:"appstore_link" db:"appstore_link"`
 }
 
 type Sender struct {

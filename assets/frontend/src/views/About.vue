@@ -7,7 +7,7 @@
 
     <div class="overlay">
       <h2>UNLEASH THE TRUE POTENTIAL <br>OF YOUR GAMES</h2>
-        <router-link to="/publishingx" tag="button">SUMBIT YOUR GAME</router-link>
+        <router-link to="/publishing" tag="button">SUMBIT YOUR GAME</router-link>
     </div>
 
     <div id="content" class="site-content">

@@ -8,14 +8,11 @@
                 <h3>Sumbit your game!</h3>
                 <h5>About game...</h5>
                 <input type="text" v-model.trim="game.name" placeholder="Game title">
+
+                <input type="text" v-model.trim="game.video" placeholder="Youtube video link">
+
                 <div class="example-2">
-                    <input type="file" name="file" id="file" class="input-file">
-                    <label for="file" class="btn btn-tertiary js-labelFile">
-                        <span class="js-fileName">Upload gameplay video</span>
-                    </label>
-                </div>
-                <div class="example-2">
-                    <input type="file" @change="onFilesSelected">
+                    <input type="file" @change="onFilesSelected" name="file" id="file" class="input-file">
                     <label for="file" class="btn btn-tertiary js-labelFile">
                         <span class="js-fileName">Upload icon</span>
                     </label>
@@ -28,6 +25,7 @@
                 <input type="email" v-model.trim="sender.email" placeholder="Email">
                 <input type="text" v-model.trim="sender.skype_id" placeholder="Skype ID">
                 <button @click="onUpload">Upload</button>
+
             </div>
         </form>
         </body>
@@ -54,26 +52,30 @@
         }),
         methods: {
             onFilesSelected(event){
-                this.game.icon = event.target.files[0]
+                 this.game.icon = event.target.files[0]
+                console.log(event.target.files[0])
+
             },
             onUpload(){
-                HTTP.post('/games', {
-                    game: this.game,
-                    sender: this.sender
-                }).then(console.log(this.game.icon))
-            },
-            getBase64(file) {
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                    console.log(reader.result);
-                };
-                reader.onerror = function (error) {
-                console.log('Error: ', error);
-                return reader.result;
-            };
+                console.log(this.game.icon)
+
+                const formData = new FormData()
+                formData.append('name', this.game.name)
+                formData.append('description', this.game.description)
+                formData.append('video', this.game.video)
+                formData.append('icon', this.game.icon)
+
+
+
+
+                HTTP.post('/games',
+                    formData ,{
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                    })
+            }
     }
-        }
     }
 </script>
 

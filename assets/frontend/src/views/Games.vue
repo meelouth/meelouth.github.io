@@ -66,37 +66,6 @@
         data() {
             return {
                 models: [],
-                gamesPair:[
-                    {gamePair:[
-                            {
-                                name:'1',
-                            },
-                            {
-                                name:'2',
-                            }
-                        ]
-                    },
-                    {gamePair:[
-                            {
-                                name:'1',
-                            },
-                            {
-                                name:'2',
-                            }
-                        ]
-                    },
-                    {gamePair:[
-                            {
-                                name:'3',
-                            },
-                            {
-                                name:'5',
-                            }
-                        ]
-                    }
-                ],
-
-
             };
         },
         created() {
