@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/kurenkoff/bstu_backend/file"
 	"github.com/labstack/echo/v4/middleware"
 	"io/ioutil"
 	"log"
@@ -43,6 +44,7 @@ func (s *Server) InitRouters() {
 	s.Echo.GET("/games/:id", s.GetGame)
 	s.Echo.GET("/games", s.GetGames)
 	s.Echo.POST("/games", s.AddGame)
+	s.Echo.GET("/images/:filename", s.GetImage)
 }
 
 func (s *Server) GetGame(ctx echo.Context) error {
@@ -84,21 +86,20 @@ func (s *Server) AddGame(ctx echo.Context) error {
 		return ctx.String(http.StatusBadRequest, err.Error())
 	}
 
-	fmt.Println(string(raw))
-
-	r := ctx.Request()
-
-
-
-	fmt.Println("FORM VALUE")
-	fmt.Println(r.FormValue("video"))
+	fmt.Println("raw body :")
 
 	var req model.AddRequest
 	err = json.Unmarshal(raw, &req)
 	if err != nil {
+		return ctx.String(http.StatusBadGateway, err.Error())
+	}
+	//fmt.Printf("%+v\n", req)
+
+	req.Game.Icon, err = file.SaveImage(req.Game.Icon)
+	if err != nil {
 		return ctx.String(http.StatusBadRequest, err.Error())
 	}
-
+	req.Game.Icon = os.Getenv("HOST_ADR")  + "images/" + req.Game.Icon
 	gameID, err := s.Rep.InsertGame(req.Game)
 	if err != nil {
 		return ctx.String(http.StatusBadRequest, err.Error())
@@ -118,4 +119,15 @@ func (s *Server) AddGame(ctx echo.Context) error {
 	}
 
 	return ctx.String(http.StatusOK, "")
+}
+
+func (s *Server) GetImage(ctx echo.Context) error {
+	filename := ctx.Param("filename")
+
+	//raw, err := file.GetFile(filename)
+	//if err != nil {
+	//	return ctx.String(http.StatusBadRequest, err.Error())
+	//}
+
+	return ctx.File(filename)
 }

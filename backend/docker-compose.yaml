@@ -16,6 +16,7 @@ services:
     ports:
     - "8081:8081"
     environment:
+      HOST_ADR: 'http://localhost:8081/'
       DSN: 'user:password@tcp(database:3306)/games?collation=utf8mb4_unicode_ci&parseTime=true'
       PORT: ':8081'
     depends_on:
