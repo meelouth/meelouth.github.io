@@ -4,7 +4,7 @@ CREATE TABLE games(
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
     video VARCHAR(50) NOT NULL,
-    icon VARCHAR(50),
+    icon VARCHAR(100),
     background VARCHAR(50),
     description VARCHAR(50) NOT NULL,
     appstore_link VARCHAR(50)

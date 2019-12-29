@@ -44,38 +44,30 @@
                 video: '',
                 appstorelink: ''
             },
-                sender:{
+            sender:{
                 skype_id: '',
                     name:'',
                     email:''
-                }
+            },
+            reader: ''
         }),
         methods: {
-            onFilesSelected(event){
-                 this.game.icon = event.target.files[0]
-                console.log(event.target.files[0])
+            onFilesSelected(event) {
+                this.reader = new FileReader();
+                this.reader.onloadend = function () {
+                    this.file = this.result
+                    console.log(this)
+                }
+                this.reader.readAsDataURL(event.target.files[0]);
+
 
             },
-            onUpload(){
-                console.log(this.game.icon)
-
-                const formData = new FormData()
-                formData.append('name', this.game.name)
-                formData.append('description', this.game.description)
-                formData.append('video', this.game.video)
-                formData.append('icon', this.game.icon)
-
-
-
-
-                HTTP.post('/games',
-                    formData ,{
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                    })
+            onUpload() {
+                this.game.icon = this.reader.result
+                console.log(this.game)
+                HTTP.post('/games', {game: this.game, sender: this.sender})
             }
-    }
+        }
     }
 </script>
 
