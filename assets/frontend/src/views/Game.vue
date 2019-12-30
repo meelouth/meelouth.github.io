@@ -10,8 +10,8 @@
                     <h2 class="title">{{model.name}}</h2>
                     <p class="description">{{model.description}}</p>
                     <div>
-                        <a href="https://apps.apple.com/us/app/perspective/id1469038654" target="_blank" class="btn-store"><img src="../../public/images/btn-appstore.png"></a>
-                        <a href="#" target="_blank" class="btn-store"><img src="../../public/images/btn-googleplay.png"></a>
+                        <a :href="model.appstore_link" target="_blank" class="btn-store"><img src="../../public/images/btn-appstore.png"></a>
+                        <a :href="model.appstore_link" target="_blank" class="btn-store"><img src="../../public/images/btn-googleplay.png"></a>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,8 @@
                     description: 'Text ...',
                     video: 'link...',
                     icon: 'link...',
-                    background: 'link...'
+                    background: 'link...',
+                    appstore_link: 'link...'
                 }
             };
         },

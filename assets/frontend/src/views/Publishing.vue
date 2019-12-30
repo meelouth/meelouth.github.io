@@ -7,24 +7,40 @@
             <div class="form-inner">
                 <h3>Sumbit your game!</h3>
                 <h5>About game...</h5>
-                <input type="text" v-model.trim="game.name" placeholder="Game title">
+                <input type="text" v-model.trim="game.name" placeholder="Game title" required>
 
-                <input type="text" v-model.trim="game.video" placeholder="Youtube video link">
+                <input type="text" v-model.trim="game.video" placeholder="Youtube video link" required>
 
                 <div class="example-2">
-                    <input type="file" @change="onFilesSelected" name="file" id="file" class="input-file">
+                    <input type="file" @change="onFilesSelected" name="file" id="file" class="input-file" required>
                     <label for="file" class="btn btn-tertiary js-labelFile">
                         <span class="js-fileName">Upload icon</span>
                     </label>
                 </div>
 
+                <input type="text" v-model.trim="game.appstore_link" placeholder="Link to your game" required>
+
+
                 <textarea placeholder="Tell us more about your game" v-model.trim="game.description" rows="3"></textarea>
 
                 <h5>About team...</h5>
-                <input type="text" v-model.trim="sender.name" placeholder="Studio name">
-                <input type="email" v-model.trim="sender.email" placeholder="Email">
-                <input type="text" v-model.trim="sender.skype_id" placeholder="Skype ID">
-                <button @click="onUpload">Upload</button>
+                <input type="text" v-model.trim="sender.name" placeholder="Studio name" required>
+                <input type="email" v-model.trim="sender.email" placeholder="Email" required>
+                <input type="text" v-model.trim="sender.skype_id" placeholder="Skype ID" required>
+                <input type="submit" @click="onUpload" class="purple-button button-round">
+
+                <div class="check_mark" v-if="savingSuccessful">
+                    <div class="sa-icon sa-success animate">
+                        <span class="sa-line sa-tip animateSuccessTip"></span>
+                        <span class="sa-line sa-long animateSuccessLong"></span>
+                        <div class="sa-placeholder"></div>
+                        <div class="sa-fix"></div>
+                    </div>
+                </div>
+
+                <h5 style="text-align: center" class="fade-in" v-if="savingSuccessful">Game successfully send!</h5>
+
+
 
             </div>
         </form>
@@ -42,21 +58,21 @@
                 description: '',
                 icon: 'null',
                 video: '',
-                appstorelink: ''
+                appstore_link: ''
             },
             sender:{
                 skype_id: '',
                     name:'',
                     email:''
             },
-            reader: ''
+            reader: '',
+            savingSuccessful: false
         }),
         methods: {
             onFilesSelected(event) {
                 this.reader = new FileReader();
                 this.reader.onloadend = function () {
                     this.file = this.result
-                    console.log(this)
                 }
                 this.reader.readAsDataURL(event.target.files[0]);
 
@@ -64,14 +80,338 @@
             },
             onUpload() {
                 this.game.icon = this.reader.result
-                console.log(this.game)
-                HTTP.post('/games', {game: this.game, sender: this.sender})
+                HTTP.post('/games', {game: this.game, sender: this.sender}).then((response) => {(console.log(response))
+                this.savingSuccessful = true})
             }
         }
     }
 </script>
 
 <style scoped>
+    .fade-in {
+        margin-top: 0px;
+        font-size: 21px;
+        text-align: center;
+
+        -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 4s; /* Firefox < 16 */
+        -ms-animation: fadein 4s; /* Internet Explorer */
+        -o-animation: fadein 4s; /* Opera < 12.1 */
+        animation: fadein 4s;
+    }
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Firefox < 16 */
+    @-moz-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Internet Explorer */
+    @-ms-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Opera < 12.1 */
+    @-o-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+
+
+
+    .check_mark {
+        width: 80px;
+        height: 130px;
+        margin: 0 auto;
+    }
+
+    button {
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    .hide{
+        display:none;
+    }
+
+    .sa-icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid gray;
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+    }
+
+    .sa-icon.sa-success {
+        border-color: #4CAF50;
+    }
+
+    .sa-icon.sa-success::before, .sa-icon.sa-success::after {
+        content: '';
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        position: absolute;
+        width: 60px;
+        height: 120px;
+        background: white;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .sa-icon.sa-success::before {
+        -webkit-border-radius: 120px 0 0 120px;
+        border-radius: 120px 0 0 120px;
+        top: -7px;
+        left: -33px;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 60px 60px;
+        transform-origin: 60px 60px;
+    }
+
+    .sa-icon.sa-success::after {
+        -webkit-border-radius: 0 120px 120px 0;
+        border-radius: 0 120px 120px 0;
+        top: -11px;
+        left: 30px;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0px 60px;
+        transform-origin: 0px 60px;
+    }
+
+    .sa-icon.sa-success .sa-placeholder {
+        width: 80px;
+        height: 80px;
+        border: 4px solid rgba(76, 175, 80, .5);
+        -webkit-border-radius: 40px;
+        border-radius: 40px;
+        border-radius: 50%;
+        box-sizing: content-box;
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        z-index: 2;
+    }
+
+    .sa-icon.sa-success .sa-fix {
+        width: 5px;
+        height: 90px;
+        background-color: white;
+        position: absolute;
+        left: 28px;
+        top: 8px;
+        z-index: 1;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .sa-icon.sa-success.animate::after {
+        -webkit-animation: rotatePlaceholder 4.25s ease-in;
+        animation: rotatePlaceholder 4.25s ease-in;
+    }
+
+    .sa-icon.sa-success {
+        border-color: transparent\9;
+    }
+    .sa-icon.sa-success .sa-line.sa-tip {
+        -ms-transform: rotate(45deg) \9;
+    }
+    .sa-icon.sa-success .sa-line.sa-long {
+        -ms-transform: rotate(-45deg) \9;
+    }
+
+    .animateSuccessTip {
+        -webkit-animation: animateSuccessTip 0.75s;
+        animation: animateSuccessTip 0.75s;
+    }
+
+    .animateSuccessLong {
+        -webkit-animation: animateSuccessLong 0.75s;
+        animation: animateSuccessLong 0.75s;
+    }
+
+    @-webkit-keyframes animateSuccessLong {
+        0% {
+            width: 0;
+            right: 46px;
+            top: 54px;
+        }
+        65% {
+            width: 0;
+            right: 46px;
+            top: 54px;
+        }
+        84% {
+            width: 55px;
+            right: 0px;
+            top: 35px;
+        }
+        100% {
+            width: 47px;
+            right: 8px;
+            top: 38px;
+        }
+    }
+    @-webkit-keyframes animateSuccessTip {
+        0% {
+            width: 0;
+            left: 1px;
+            top: 19px;
+        }
+        54% {
+            width: 0;
+            left: 1px;
+            top: 19px;
+        }
+        70% {
+            width: 50px;
+            left: -8px;
+            top: 37px;
+        }
+        84% {
+            width: 17px;
+            left: 21px;
+            top: 48px;
+        }
+        100% {
+            width: 25px;
+            left: 14px;
+            top: 45px;
+        }
+    }
+    @keyframes animateSuccessTip {
+        0% {
+            width: 0;
+            left: 1px;
+            top: 19px;
+        }
+        54% {
+            width: 0;
+            left: 1px;
+            top: 19px;
+        }
+        70% {
+            width: 50px;
+            left: -8px;
+            top: 37px;
+        }
+        84% {
+            width: 17px;
+            left: 21px;
+            top: 48px;
+        }
+        100% {
+            width: 25px;
+            left: 14px;
+            top: 45px;
+        }
+    }
+
+    @keyframes animateSuccessLong {
+        0% {
+            width: 0;
+            right: 46px;
+            top: 54px;
+        }
+        65% {
+            width: 0;
+            right: 46px;
+            top: 54px;
+        }
+        84% {
+            width: 55px;
+            right: 0px;
+            top: 35px;
+        }
+        100% {
+            width: 47px;
+            right: 8px;
+            top: 38px;
+        }
+    }
+
+    .sa-icon.sa-success .sa-line {
+        height: 5px;
+        background-color: #4CAF50;
+        display: block;
+        border-radius: 2px;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .sa-icon.sa-success .sa-line.sa-tip {
+        width: 25px;
+        left: 14px;
+        top: 46px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .sa-icon.sa-success .sa-line.sa-long {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    @-webkit-keyframes rotatePlaceholder {
+        0% {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        5% {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        12% {
+            transform: rotate(-405deg);
+            -webkit-transform: rotate(-405deg);
+        }
+        100% {
+            transform: rotate(-405deg);
+            -webkit-transform: rotate(-405deg);
+        }
+    }
+    @keyframes rotatePlaceholder {
+        0% {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        5% {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+        12% {
+            transform: rotate(-405deg);
+            -webkit-transform: rotate(-405deg);
+        }
+        100% {
+            transform: rotate(-405deg);
+            -webkit-transform: rotate(-405deg);
+        }
+    }
+
     body {background: #856396}
     .decor {
         position: relative;
@@ -149,6 +489,17 @@
         border-bottom: 4px solid #59118c;
         color: white;
         font-size: 14px;
+    }
+    .button-round{
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 10px;
+        background: #E9EFF6;
+        line-height: 40px;
+        border-width: 0;
+        border-radius: 20px;
+        font-family: 'Roboto', sans-serif;
     }
     .form-inner textarea {resize: none;}
     .form-inner h3 {
